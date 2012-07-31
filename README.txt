@@ -19,12 +19,20 @@ As pickle is slow, the intention is to save memory, not provide faster
 IPC than making a copy of the NumPy array would do. If memory is not 
 an issue, just use normal NumPy arrays instead.
 
+
+
+Warning about shared memory:
+
 As always when using shared memory, beware of 'false sharing'. If you
 don't know what that is, chances are that NOT USING SHARED MEMORY will
 give you better performance. It is also for this reason that C programs
 using multiple processes (e.g. MPI or fork) tend to perform better than 
 programs using multithreading (e.g. OpenMP or pthreads).
 
+http://en.wikipedia.org/wiki/False_sharing
+
+Shared memory segments are also readable files in the file system 
+(under /tmp on Linux). This might be a security issue on some systems.
 
 
 
