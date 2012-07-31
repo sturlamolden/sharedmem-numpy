@@ -1,4 +1,3 @@
-
 Shared memory arrays for NumPy and Multiprocessing
 
 (C) Sturla Molden 2009, 2011, 2012
@@ -15,11 +14,16 @@ Usage:
 > array = sm.zeros((m,n), dtype=float)
 
 These arrays can be passed to multiprocessing.Queue and are pickled
-by the same of the segment rather than the content of the buffer.
+by the name of the segment rather than the contents of the buffer.
+As pickle is slow, the intention is to save memory, not provide faster 
+IPC than making a copy of the NumPy array would do. If memory is not 
+an issue, just use normal NumPy arrays instead.
 
-As pickle is slow, the intention is to save memory, not faster IPC
-than making a copy of the NumPy array. If memory is not an issue,
-just use normal NumPy arrays instead.
+As always when using shared memory, beware of 'false sharing'. If you
+don't know what that is, chances are that NOT USING SHARED MEMORY will
+give you better performance. It is also for this reason that C programs
+using multiple processes (e.g. MPI or fork) tend to perform better than 
+programs using multithreading (e.g. OpenMP or pthreads).
 
 
 
