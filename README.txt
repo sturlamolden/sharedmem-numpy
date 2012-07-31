@@ -1,9 +1,5 @@
 Shared memory arrays for NumPy and Multiprocessing
 
-(C) Sturla Molden 2009, 2011, 2012
-SciPy license 
-
-
 To build .pyd files:
 
 > python setup.py build_ext
@@ -36,7 +32,7 @@ Shared memory segments are also readable files in the file system
 
 
 
-Copyright (c) 2012, Sturla Molden
+Copyright (c) 2009, 2011, 2012, Sturla Molden
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, 
