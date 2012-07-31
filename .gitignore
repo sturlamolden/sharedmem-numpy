@@ -1,0 +1,6 @@
+/*.pyx~
+/*.py~
+build
+/*.pyd
+/dump.txt
+/*.pyc
