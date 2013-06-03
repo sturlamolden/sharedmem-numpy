@@ -30,7 +30,7 @@ else: #if sys.platform == 'linux2' # or 'darwin'
 
     unixshared =  Extension("sharedmem.sharedmemory_sysv",
                             ["sharedmem/sharedmemory_sysv.pyx"],
-                            include_dirs=[np.get_include()]
+                            include_dirs=[np.get_include()],
                            library_dirs=lib_dirs,
                            libraries=libs)
     ext_modules = [unixshared]
