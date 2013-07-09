@@ -5,7 +5,6 @@
 
 import copy_reg
 import sharedmem.heap as heap
-from pickle import PicklingError
 
 import numpy as np
 

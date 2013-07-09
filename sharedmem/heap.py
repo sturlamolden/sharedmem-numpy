@@ -2,7 +2,6 @@ from __future__ import with_statement
 
 import sys
 import threading
-import multiprocessing
 
 if sys.version_info < (2, 5):
     import multiprocessing._mmap25 as mmap
