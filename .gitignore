@@ -1,6 +1,13 @@
-/*.pyx~
-/*.py~
 build
-/*.pyd
+*.c
+*.pyc
+*.pyd
+*.pyo
+*.so
+
 /dump.txt
-/*.pyc
+
+# editor cruft
+*.pyx~
+*.py~
+.*.sw[op]
