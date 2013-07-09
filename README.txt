@@ -7,7 +7,7 @@ To build .pyd files:
 Usage:
 
 > import sharedmem as shm
-> array = sm.zeros((m,n), dtype=float)
+> array = shm.zeros((m,n), dtype=float)
 
 These arrays can be passed to multiprocessing.Queue and are pickled
 by the name of the segment rather than the contents of the buffer.
