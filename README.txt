@@ -3,6 +3,7 @@ Shared memory arrays for NumPy and Multiprocessing
 To build .pyd files:
 
 > python setup.py build_ext
+> python setup.py install
 
 Usage:
 
