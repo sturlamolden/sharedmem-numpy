@@ -201,6 +201,9 @@ cdef class SharedMemoryBuffer:
         
         lkey = 1 if IPC_PRIVATE < 0 else IPC_PRIVATE + 1
 
+        if buf_size < 0:
+            raise ValueError, "Negative buffer size"
+
         if (name is None) and (unpickling):
             raise TypeError, "Cannot unpickle without a kernel object name."
 
