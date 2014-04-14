@@ -152,7 +152,9 @@ os._exit = _os_exit_monkey_patch
 
 
 
-cdef inline void highlow(Py_ssize_t size, DWORD *high, DWORD *low):
+cdef int highlow(Py_ssize_t size, DWORD *high, DWORD *low) except -1:
+    if size < 0:
+        raise ValueError, "Negative buffer size"
     if sizeof(size) == sizeof(DWORD):
         # 32 bit
         high[0] = 0
@@ -161,6 +163,7 @@ cdef inline void highlow(Py_ssize_t size, DWORD *high, DWORD *low):
         # 64 bit
         high[0] = <DWORD> (size >> 32)
         low[0] = <DWORD> (size & 0x00000000FFFFFFFF)
+    return 0
 
 
 
@@ -177,7 +180,7 @@ cdef class SharedMemoryBuffer:
     def __init__(SharedMemoryBuffer self, Py_ssize_t buf_size, name=None, unpickling=False):
         cdef HANDLE h
         cdef DWORD high, low
-        highlow(size,&high,&low)
+        highlow(buf_size,&high,&low)
         with __module_rlock:
             if name is None:
                 self.name = uuid.uuid4().hex
