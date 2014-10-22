@@ -25,6 +25,9 @@ if sys.platform == 'win32':
     ext_modules = [winshared]
 
 else: #if sys.platform == 'linux2' # or 'darwin'
+
+    raise RuntimeError("SysV IPC version has serious defects (Oct 2014)")
+
     lib_dirs = [r'/usr/local/lib', r'.']
     libs = ['m']
 
